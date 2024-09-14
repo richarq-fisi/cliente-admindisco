@@ -1,0 +1,13 @@
+{% extends "./base.html" %}
+
+{% block body %}
+<div>Para crear tu cuenta te pediremos algunos datos</div>
+<center>
+    <a href="{% url 'cliente_registro' %}">
+        Registrar Cliente
+    </a>
+    <a href="{% url 'admin_registro' %}">
+        Registrar Administrador
+    </a>
+</center>
+{% endblock %}
