@@ -15,6 +15,8 @@ def cliente_panel(request):
 def admin_panel(request):
     return render(request, 'admin_panel.html')
 
+###########################################################
+
 # INDEX PRINCIPAL
 def index(request):
     return render(request, 'index.html')
@@ -72,24 +74,6 @@ def login_view(request):
 
     return render(request, 'login.html', {'form': form})
 
-# def login_view(request):
-#     form = AuthenticationForm(request, data=request.POST or None)
-
-#     if form.is_valid():
-#         user = authenticate(
-#             username=form.cleaned_data.get('username'),
-#             password=form.cleaned_data.get('password')
-#         )
-#         if user:
-#             login(request, user)
-#             if user.is_admindisco:
-#                 return redirect('admin_panel')
-#             if not user.is_superuser:
-#                 return redirect('cliente_panel')
-#             messages.error(request, 'Usted es SuperUsuario')
-#         else:
-#             messages.error(request, 'Credenciales incorrectas')
-#     elif request.method == 'POST':
-#         messages.error(request, 'Información de login no válida')
-
-#     return render(request, 'login.html', {'form': form})
+# PAGINA NO ENCONTRADA
+def page_not_found(request, exception):
+    return render(request, '404.html', status=404)

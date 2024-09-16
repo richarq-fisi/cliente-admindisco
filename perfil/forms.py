@@ -46,15 +46,30 @@ class AdminRegistroForm(UserCreationForm):
     distrito = forms.CharField(max_length=100)
     telefono = forms.CharField(max_length=15)
     correo_personal = forms.EmailField(required=False)
+    nombre_admin = forms.CharField(max_length=100)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['username'].label = "Nombre de usuario"
-        self.fields['email'].label = "Correo electrónico"
-        self.fields['password1'].label = "Contraseña"
-        self.fields['password2'].label = "Confirmar contraseña"
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['username'].label = "Nombre de usuario"
+    #     self.fields['email'].label = "Correo electrónico"
+    #     self.fields['password1'].label = "Contraseña"
+    #     self.fields['password2'].label = "Confirmar contraseña"
 
-    field_order = ['username', 'email', 'correo_personal', 'nombre_discoteca', 'razon_social', 'ruc', 'direccion', 'departamento', 'provincia', 'distrito', 'telefono', 'password1', 'password2']
+    field_order = ['username',
+                    'nombre_admin',
+                    'email',
+                    'correo_personal',
+                    'nombre_discoteca', 
+                    'razon_social', 
+                    'ruc', 
+                    'direccion', 
+                    'departamento', 
+                    'provincia', 
+                    'distrito', 
+                    'telefono', 
+                    'password1', 
+                    'password2'
+                    ]
 
     def save(self, commit=True):
         user = super().save(commit=False)
