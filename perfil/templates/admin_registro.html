@@ -84,22 +84,22 @@
             <div>
                 <label for="id_password1">Contraseña</label>
                 <input type="password" id="passwordField1" name="password1">
-                <button type="button" onclick="togglePassword('passwordField1', 'toggleIcon1')">
+                <!-- <button type="button" onclick="togglePassword('passwordField1', 'toggleIcon1')">
                     <svg id="toggleIcon1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h.01M19.072 19.071A10 10 0 004.93 4.929M10 14a4 4 0 114-4m0 0h.01M9.858 9.857A4.001 4.001 0 0115 15.001"/>
                     </svg>
-                </button>
+                </button> -->
             </div>
         
             <!-- Campo de Confirmar Contraseña con botón para mostrar/ocultar -->
             <div>
                 <label for="id_password2">Confirmar contraseña</label>
                 <input type="password" id="passwordField2" name="password2">
-                <button type="button" onclick="togglePassword('passwordField2', 'toggleIcon2')">
+                <!-- <button type="button" onclick="togglePassword('passwordField2', 'toggleIcon2')">
                     <svg id="toggleIcon2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h.01M19.072 19.071A10 10 0 004.93 4.929M10 14a4 4 0 114-4m0 0h.01M9.858 9.857A4.001 4.001 0 0115 15.001"/>
                     </svg>
-                </button>
+                </button> -->
             </div>
         
             <!-- Botón de registro -->
@@ -110,9 +110,9 @@
             </div>
         </form>
     </div>
-    
+</div>    
     <!-- Script para alternar la visibilidad de la contraseña -->
-    <script>
+    <!-- <script>
         function togglePassword(fieldId, iconId) {
             const passwordField = document.getElementById(fieldId);
             const icon = document.getElementById(iconId);
@@ -126,6 +126,6 @@
                 icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h.01M19.072 19.071A10 10 0 004.93 4.929M10 14a4 4 0 114-4m0 0h.01M9.858 9.857A4.001 4.001 0 0115 15.001"/>';
             }
         }
-    </script>
+    </script> -->
 
 {% endblock %}
