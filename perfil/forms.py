@@ -48,13 +48,6 @@ class AdminRegistroForm(UserCreationForm):
     correo_personal = forms.EmailField(required=False)
     nombre_admin = forms.CharField(max_length=100)
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields['username'].label = "Nombre de usuario"
-    #     self.fields['email'].label = "Correo electrónico"
-    #     self.fields['password1'].label = "Contraseña"
-    #     self.fields['password2'].label = "Confirmar contraseña"
-
     field_order = ['username',
                     'nombre_admin',
                     'email',

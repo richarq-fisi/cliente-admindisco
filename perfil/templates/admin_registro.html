@@ -7,12 +7,6 @@
     <div>
         <form method="POST">
             {% csrf_token %}
-            
-            <!-- Nombre de usuario -->
-            <div>
-                <label for="id_username">Nombre de usuario</label>
-                {{ form.username }}
-            </div>
 
             <!-- Nombre de administrador -->
             <div>
@@ -80,6 +74,12 @@
                 {{ form.telefono }}
             </div>
         
+            <!-- Nombre de usuario -->
+            <div>
+                <label for="id_username">Nombre de usuario</label>
+                {{ form.username }}
+            </div>
+            
             <!-- Campo de Contraseña con botón para mostrar/ocultar -->
             <div>
                 <label for="id_password1">Contraseña</label>
