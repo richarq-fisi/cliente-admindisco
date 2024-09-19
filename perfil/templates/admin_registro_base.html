@@ -1,0 +1,102 @@
+{% extends "./base.html" %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <h2 class="text-center">Registro Administrador de Discoteca</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <!-- Nombre del administrador -->
+            <div class="col-md-6 mb-3">
+                <label for="id_nombre_admin" class="form-label">Nombre del administrador</label>
+                {{ form.nombre_admin }}
+            </div>
+
+            <!-- Correo electrónico -->
+            <div class="col-md-6 mb-3">
+                <label for="id_email" class="form-label">Correo electrónico</label>
+                {{ form.email }}
+            </div>
+
+            <!-- Correo personal -->
+            <div class="col-md-6 mb-3">
+                <label for="id_correo_personal" class="form-label">Correo personal</label>
+                {{ form.correo_personal }}
+            </div>
+
+            <!-- Nombre de la discoteca -->
+            <div class="col-md-6 mb-3">
+                <label for="id_nombre_discoteca" class="form-label">Nombre de la discoteca</label>
+                {{ form.nombre_discoteca }}
+            </div>
+
+            <!-- Razón social -->
+            <div class="col-md-6 mb-3">
+                <label for="id_razon_social" class="form-label">Razón social</label>
+                {{ form.razon_social }}
+            </div>
+
+            <!-- RUC -->
+            <div class="col-md-6 mb-3">
+                <label for="id_ruc" class="form-label">RUC</label>
+                {{ form.ruc }}
+            </div>
+
+            <!-- Dirección -->
+            <div class="col-md-6 mb-3">
+                <label for="id_direccion" class="form-label">Dirección</label>
+                {{ form.direccion }}
+            </div>
+
+            <!-- Departamento -->
+            <div class="col-md-6 mb-3">
+                <label for="id_departamento" class="form-label">Departamento</label>
+                {{ form.departamento }}
+            </div>
+
+            <!-- Provincia -->
+            <div class="col-md-6 mb-3">
+                <label for="id_provincia" class="form-label">Provincia</label>
+                {{ form.provincia }}
+            </div>
+
+            <!-- Distrito -->
+            <div class="col-md-6 mb-3">
+                <label for="id_distrito" class="form-label">Distrito</label>
+                {{ form.distrito }}
+            </div>
+
+            <!-- Teléfono -->
+            <div class="col-md-6 mb-3">
+                <label for="id_telefono" class="form-label">Teléfono</label>
+                {{ form.telefono }}
+            </div>
+
+            <!-- Nombre de usuario -->
+            <div class="col-md-6 mb-3">
+                <label for="id_username" class="form-label">Nombre de usuario</label>
+                {{ form.username }}
+            </div>
+
+            <!-- Contraseña -->
+            <div class="col-md-6 mb-3">
+                <label for="id_password1" class="form-label">Contraseña</label>
+                <input type="password" id="passwordField1" name="password1" class="form-control">
+            </div>
+
+            <!-- Confirmar contraseña -->
+            <div class="col-md-6 mb-3">
+                <label for="id_password2" class="form-label">Confirmar contraseña</label>
+                <input type="password" id="passwordField2" name="password2" class="form-control">
+            </div>
+        </div>
+
+        <!-- Botón de registro -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

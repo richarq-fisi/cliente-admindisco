@@ -1,131 +1,119 @@
 {% extends "./base.html" %}
+{% load crispy_forms_tags %}
 
 {% block body %}
 
-<div>
-    <div>Registro Administrador de Discoteca</div>
-    <div>
-        <form method="POST">
-            {% csrf_token %}
+<style>
+    .textinput, #id_email, #id_correo_personal, #id_password1, #id_password2{
+        background-color: rgb(237, 237, 237);
+    }
+    #id_username_helptext, #id_password1_helptext{
+        display: none;
+    }
+    input:focus {
+        outline: none;
+        border-color: #7a7a7a !important; /* Color medio plomo */
+        box-shadow: 0 0 5px #7a7a7a !important; /* Opcional, añade un efecto de sombra */
+    }
+    .registrar {
+    /* Estilo normal */
+    background-color: black; /* Color de fondo normal (puedes ajustarlo según tus necesidades) */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+    color: whitesmoke;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+    }
 
-            <!-- Nombre de administrador -->
-            <div>
-                <label for="id_nombre_admin">Nombre del administrador</label>
-                {{ form.nombre_admin }}
+    .registrar:hover {
+        background-color: rgb(76, 76, 76); /* Color de fondo en estado hover (gris) */
+        color: whitesmoke;
+    }
+</style>
+
+<div class="container mt-3">
+    <h2 class="text-center">Registro Administrador de Discoteca</h2>
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        <div class="row">
+            <!-- Nombre del administrador -->
+            <div class="col-md-6">
+                {{ form.nombre_admin|as_crispy_field }}
             </div>
-        
+
             <!-- Correo electrónico -->
-            <div>
-                <label for="id_email">Correo electrónico</label>
-                {{ form.email }}
+            <div class="col-md-6">
+                {{ form.email|as_crispy_field }}
             </div>
-        
-            <!-- Correo personal -->
-            <div>
-                <label for="id_correo_personal">Correo personal</label>
-                {{ form.correo_personal }}
-            </div>
-        
-            <!-- Nombre de la discoteca -->
-            <div>
-                <label for="id_nombre_discoteca">Nombre de la discoteca</label>
-                {{ form.nombre_discoteca }}
-            </div>
-        
-            <!-- Razón social -->
-            <div>
-                <label for="id_razon_social">Razón social</label>
-                {{ form.razon_social }}
-            </div>
-        
-            <!-- RUC -->
-            <div>
-                <label for="id_ruc">RUC</label>
-                {{ form.ruc }}
-            </div>
-        
-            <!-- Dirección -->
-            <div>
-                <label for="id_direccion">Dirección</label>
-                {{ form.direccion }}
-            </div>
-        
-            <!-- Departamento -->
-            <div>
-                <label for="id_departamento">Departamento</label>
-                {{ form.departamento }}
-            </div>
-        
-            <!-- Provincia -->
-            <div>
-                <label for="id_provincia">Provincia</label>
-                {{ form.provincia }}
-            </div>
-        
-            <!-- Distrito -->
-            <div>
-                <label for="id_distrito">Distrito</label>
-                {{ form.distrito }}
-            </div>
-        
-            <!-- Teléfono -->
-            <div>
-                <label for="id_telefono">Teléfono</label>
-                {{ form.telefono }}
-            </div>
-        
-            <!-- Nombre de usuario -->
-            <div>
-                <label for="id_username">Nombre de usuario</label>
-                {{ form.username }}
-            </div>
-            
-            <!-- Campo de Contraseña con botón para mostrar/ocultar -->
-            <div>
-                <label for="id_password1">Contraseña</label>
-                <input type="password" id="passwordField1" name="password1">
-                <!-- <button type="button" onclick="togglePassword('passwordField1', 'toggleIcon1')">
-                    <svg id="toggleIcon1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h.01M19.072 19.071A10 10 0 004.93 4.929M10 14a4 4 0 114-4m0 0h.01M9.858 9.857A4.001 4.001 0 0115 15.001"/>
-                    </svg>
-                </button> -->
-            </div>
-        
-            <!-- Campo de Confirmar Contraseña con botón para mostrar/ocultar -->
-            <div>
-                <label for="id_password2">Confirmar contraseña</label>
-                <input type="password" id="passwordField2" name="password2">
-                <!-- <button type="button" onclick="togglePassword('passwordField2', 'toggleIcon2')">
-                    <svg id="toggleIcon2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h.01M19.072 19.071A10 10 0 004.93 4.929M10 14a4 4 0 114-4m0 0h.01M9.858 9.857A4.001 4.001 0 0115 15.001"/>
-                    </svg>
-                </button> -->
-            </div>
-        
-            <!-- Botón de registro -->
-            <div>
-                <button type="submit">
-                    Registrar
-                </button>
-            </div>
-        </form>
-    </div>
-</div>    
-    <!-- Script para alternar la visibilidad de la contraseña -->
-    <!-- <script>
-        function togglePassword(fieldId, iconId) {
-            const passwordField = document.getElementById(fieldId);
-            const icon = document.getElementById(iconId);
-            const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
-            passwordField.setAttribute("type", type);
 
-            // Cambia el ícono al mostrar/ocultar la contraseña
-            if (type === "text") {
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825l2.25 2.25 4.875-4.875m0 0l-2.25-2.25m2.25 2.25L17.25 10.5m-4.875 4.875m6.75-6.75m-1.5 1.5L8.25 4.5"/>';
-            } else {
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h.01M19.072 19.071A10 10 0 004.93 4.929M10 14a4 4 0 114-4m0 0h.01M9.858 9.857A4.001 4.001 0 0115 15.001"/>';
-            }
-        }
-    </script> -->
+            <!-- Correo personal -->
+            <div class="col-md-6">
+                {{ form.correo_personal|as_crispy_field }}
+            </div>
+
+            <!-- Nombre de la discoteca -->
+            <div class="col-md-6">
+                {{ form.nombre_discoteca|as_crispy_field }}
+            </div>
+
+            <!-- Razón social -->
+            <div class="col-md-6">
+                {{ form.razon_social|as_crispy_field }}
+            </div>
+
+            <!-- RUC -->
+            <div class="col-md-6">
+                {{ form.ruc|as_crispy_field }}
+            </div>
+
+            <!-- Dirección -->
+            <div class="col-md-6">
+                {{ form.direccion|as_crispy_field }}
+            </div>
+
+            <!-- Departamento -->
+            <div class="col-md-6">
+                {{ form.departamento|as_crispy_field }}
+            </div>
+
+            <!-- Provincia -->
+            <div class="col-md-6">
+                {{ form.provincia|as_crispy_field }}
+            </div>
+
+            <!-- Distrito -->
+            <div class="col-md-6">
+                {{ form.distrito|as_crispy_field }}
+            </div>
+
+            <!-- Teléfono -->
+            <div class="col-md-6">
+                {{ form.telefono|as_crispy_field }}
+            </div>
+
+            <!-- Nombre de usuario -->
+            <div class="col-md-6">
+                {{ form.username|as_crispy_field }}
+            </div>
+
+            <!-- Contraseña -->
+            <div class="col-md-6">
+                {{ form.password1|as_crispy_field }}
+            </div>
+
+            <!-- Confirmar contraseña -->
+            <div class="col-md-6">
+                {{ form.password2|as_crispy_field }}
+            </div>
+        </div>
+
+        <!-- Botón de registro -->
+        <div class="text-center">
+            <button type="submit" class="btn registrar">Registrar</button>
+        </div>
+    </form>
+</div>
+
+
 
 {% endblock %}

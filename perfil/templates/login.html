@@ -1,51 +1,61 @@
 {% extends "./base.html" %}
+{% load static %}
+{% load widget_tweaks %}
 
 {% block body %}
-    
-    <div>Iniciar sesión</div>
+<style>
+    input:focus {
+        outline: none;
+        border-color: #7a7a7a !important; /* Color medio plomo */
+        box-shadow: 0 0 5px #7a7a7a !important; /* Opcional, añade un efecto de sombra */
+    }
+    button{
+        background-color: black !important;
+        color: aliceblue !important;
+    }
+    button:focus {
+        outline: none;
+        border-color: #7a7a7a !important; /* Color medio plomo */
+        box-shadow: 0 0 2px #7a7a7a !important; /* Opcional, añade un efecto de sombra */
+    }
+    button:hover{
+        background-color: #4f4f4f !important;
+    }
+</style>
 
-    <div>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="width: 350px;">
+        <div class="text-center mb-4">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" class="img-fluid" style="height: 80px;">
+        </div>
+
+        <h5 class="text-center mb-4">Iniciar sesión</h5>
+
         <form method="POST">
             {% csrf_token %}
-            
-            <div>
-                <label for="id_username">Usuario</label>
-                {{ form.username }}
+
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Usuario</label>
+                {{ form.username|add_class:"form-control" }}
             </div>
 
-            <div>
-                <label for="id_password">Contraseña</label>
-                
-                <input type="password" id="passwordField" name="password">
-                <button type="button" onclick="togglePassword()">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h.01M19.072 19.071A10 10 0 004.93 4.929M10 14a4 4 0 114-4m0 0h.01M9.858 9.857A4.001 4.001 0 0115 15.001"/>
-                    </svg>
-                </button>
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Contraseña</label>
+                <input type="password" id="passwordField" name="password" class="form-control">
             </div>
 
-            <div>
-                <button type="submit">
-                    Iniciar sesión
-                </button>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn">Ingresar</button>
             </div>
         </form>
 
         {% if messages %}
-            <ul>
+            <ul class="mt-3">
                 {% for message in messages %}
-                    <li>{{ message }}</li>
+                    <li class="text-danger">{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
     </div>
-
-    <script>
-        function togglePassword() {
-            const passwordField = document.getElementById("passwordField");
-            const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
-            passwordField.setAttribute("type", type);
-        }
-    </script>
-
+</div>
 {% endblock %}

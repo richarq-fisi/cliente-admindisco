@@ -1,0 +1,51 @@
+{% extends "./base.html" %}
+
+{% block body %}
+    
+    <div>Iniciar sesión</div>
+
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div>
+                <label for="id_username">Usuario</label>
+                {{ form.username }}
+            </div>
+
+            <div>
+                <label for="id_password">Contraseña</label>
+                
+                <input type="password" id="passwordField" name="password">
+                <button type="button" onclick="togglePassword()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h.01M19.072 19.071A10 10 0 004.93 4.929M10 14a4 4 0 114-4m0 0h.01M9.858 9.857A4.001 4.001 0 0115 15.001"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div>
+                <button type="submit">
+                    Iniciar sesión
+                </button>
+            </div>
+        </form>
+
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById("passwordField");
+            const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+            passwordField.setAttribute("type", type);
+        }
+    </script>
+
+{% endblock %}

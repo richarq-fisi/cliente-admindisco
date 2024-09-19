@@ -7,8 +7,12 @@ admin.site.unregister(Group)
 
 # MODELO USUARIO
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'is_superuser')
+    list_display = ('username', 'email', 'is_superuser', 'get_is_active')
     search_fields = ['username']
+    def get_is_active(self, obj):
+        return obj.is_active
+    get_is_active.boolean = True
+    get_is_active.short_description = 'Cuenta Activa'
 
 # MODELO ADMINISTRADOR DISCOTECA
 class AdministradorAdmin(admin.ModelAdmin):

@@ -18,9 +18,13 @@ ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS', default=[]))
 # Application definition
 
 INSTALLED_APPS = [
-    #'material',
-    #'material.admin',
-    'django.contrib.admin',
+    'material',
+    'material.admin',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'widget_tweaks',
+    
+    #'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -29,6 +33,8 @@ INSTALLED_APPS = [
     # APPS
     'perfil',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -103,7 +109,8 @@ USE_I18N = True
 USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
