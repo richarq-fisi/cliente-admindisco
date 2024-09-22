@@ -18,13 +18,13 @@ ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS', default=[]))
 # Application definition
 
 INSTALLED_APPS = [
-    'material',
-    'material.admin',
+    #'material',
+    #'material.admin',
     'crispy_forms',
     'crispy_bootstrap5',
     'widget_tweaks',
     
-    #'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
