@@ -18,8 +18,7 @@ ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS', default=[]))
 # Application definition
 
 INSTALLED_APPS = [
-    #'material',
-    #'material.admin',
+    'unfold',
     'crispy_forms',
     'crispy_bootstrap5',
     'widget_tweaks',
@@ -59,6 +58,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': True,
         },
     },
 ]
