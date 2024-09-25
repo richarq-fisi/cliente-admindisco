@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     id = models.AutoField(primary_key=True)
     is_admindisco = models.BooleanField('admin disco', default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     class Meta:
         verbose_name_plural = "Usuarios"
 

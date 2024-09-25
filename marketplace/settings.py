@@ -2,38 +2,38 @@ from pathlib import Path
 import environ
 import os
 
-# from django.templatetags.static import static
-# from django.urls import reverse_lazy
-# from django.utils.translation import gettext_lazy as _
+from django.templatetags.static import static
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
-# UNFOLD = {
-#     "THEME": "light",
-#     "SITE_TITLE": "Panel de administración",
-#     "SITE_HEADER": "Bienvenido al Panel de administración",
-#     "COLORS": {
-#         "font": {
-#             "subtle-light": "107 114 128",
-#             "subtle-dark": "156 163 175",
-#             "default-light": "75 85 99",
-#             "default-dark": "209 213 219",
-#             "important-light": "17 24 39",
-#             "important-dark": "243 244 246",
-#         },
-#         "primary": {
-#             "50": "250 250 250",
-#             "100": "244 244 245",
-#             "200": "228 228 23",
-#             "300": "212 212 216",
-#             "400": "161 161 170",
-#             "500": "113 113 122",
-#             "600": "82 82 91",
-#             "700": "63 63 70",
-#             "800": "39 39 42",
-#             "900": "24 24 27",
-#             "950": "9 9 11",
-#         },
-#     },
-# }
+UNFOLD = {
+    "THEME": "light",
+    "SITE_TITLE": "Panel de administración",
+    "SITE_HEADER": "Bienvenido al Panel de administración",
+    "COLORS": {
+        "font": {
+            "subtle-light": "107 114 128",
+            "subtle-dark": "156 163 175",
+            "default-light": "75 85 99",
+            "default-dark": "209 213 219",
+            "important-light": "17 24 39",
+            "important-dark": "243 244 246",
+        },
+        "primary": {
+            "50": "250 250 250",
+            "100": "244 244 245",
+            "200": "228 228 23",
+            "300": "212 212 216",
+            "400": "161 161 170",
+            "500": "113 113 122",
+            "600": "82 82 91",
+            "700": "63 63 70",
+            "800": "39 39 42",
+            "900": "24 24 27",
+            "950": "9 9 11",
+        },
+    },
+}
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,6 +51,7 @@ ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS', default=[]))
 # Application definition
 
 INSTALLED_APPS = [
+    'unfold',
     'crispy_forms',
     'crispy_bootstrap5',
     'widget_tweaks',
