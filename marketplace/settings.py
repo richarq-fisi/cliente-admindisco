@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 UNFOLD = {
+    "SHOW_HISTORY": False,
     "THEME": "light",
     "SITE_TITLE": "Panel de administración",
     "SITE_HEADER": "Bienvenido al Panel de administración",
@@ -51,6 +52,7 @@ ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS', default=[]))
 # Application definition
 
 INSTALLED_APPS = [
+    #'jazzmin',
     'unfold',
     'crispy_forms',
     'crispy_bootstrap5',
