@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User, Cliente, Administrador
 
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 
 class AdministradorForm(forms.ModelForm):
     username = forms.CharField(label="Nombre de usuario", max_length=150)
@@ -113,7 +113,7 @@ class AdminRegistroForm(UserCreationForm):
     distrito = forms.CharField(max_length=100)
     telefono = forms.CharField(max_length=15)
     correo_personal = forms.EmailField(required=False)
-    nombre_admin = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'autofocus': True}))
+    nombre_admin = forms.CharField(max_length=100)
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -125,21 +125,21 @@ class AdminRegistroForm(UserCreationForm):
         # Asegura que el campo 'username' no tenga autofocus
         self.fields['username'].widget.attrs.pop('autofocus', None)
 
-    field_order = ['username',
-                    'nombre_admin',
-                    'email',
-                    'correo_personal',
-                    'nombre_discoteca', 
-                    'razon_social', 
-                    'ruc', 
-                    'direccion', 
-                    'departamento', 
-                    'provincia', 
-                    'distrito', 
-                    'telefono', 
-                    'password1', 
-                    'password2'
-                    ]
+    # field_order = ['username',
+    #                 'nombre_admin',
+    #                 'email',
+    #                 'correo_personal',
+    #                 'nombre_discoteca', 
+    #                 'razon_social', 
+    #                 'ruc', 
+    #                 'direccion', 
+    #                 'departamento', 
+    #                 'provincia', 
+    #                 'distrito', 
+    #                 'telefono', 
+    #                 'password1', 
+    #                 'password2'
+    #                 ]
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -148,6 +148,7 @@ class AdminRegistroForm(UserCreationForm):
             user.save()
             Administrador.objects.create(
                 user=user,
+                nombre_admin=self.cleaned_data['nombre_admin'],
                 nombre_discoteca=self.cleaned_data['nombre_discoteca'],
                 razon_social=self.cleaned_data['razon_social'],
                 ruc=self.cleaned_data['ruc'],
@@ -199,6 +200,7 @@ class AdminRegistroForm(UserCreationForm):
             user.save()
             Administrador.objects.create(
                 user=user,
+                nombre_admin=self.cleaned_data['nombre_admin'], 
                 nombre_discoteca=self.cleaned_data['nombre_discoteca'],
                 razon_social=self.cleaned_data['razon_social'],
                 ruc=self.cleaned_data['ruc'],

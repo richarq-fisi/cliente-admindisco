@@ -13,13 +13,12 @@
         box-shadow: 0 0 5px #7a7a7a !important; /* Opcional, añade un efecto de sombra */
     }
     .registrar {
-    /* Estilo normal */
-    background-color: black !important; /* Color de fondo normal (puedes ajustarlo según tus necesidades) */
-    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
-    color: whitesmoke;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-weight: bold;
+        background-color: black !important; /* Color de fondo normal (puedes ajustarlo según tus necesidades) */
+        transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+        color: whitesmoke;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-weight: bold;
     }
 
     .registrar:hover {
@@ -43,7 +42,7 @@
                 {{ form.email|as_crispy_field }}
             </div>
             <!-- Teléfono -->
-            <div class="mb-3">
+            <div class="mb-3 telefono">
                 {{ form.telefono|as_crispy_field }}
             </div>
             <!-- Dirección -->
@@ -66,5 +65,48 @@
         </form>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const telefonoInput = document.querySelector(".telefono input");
+
+        telefonoInput.addEventListener('input', function(e) {
+            // Remover todo lo que no sean números
+            let value = this.value.replace(/\D/g, '');
+
+            // Limitar a 9 números
+            if (value.length > 9) {
+                value = value.slice(0, 9);
+            }
+
+            // Separar cada 3 dígitos
+            let formattedValue = '';
+            for (let i = 0; i < value.length; i += 3) {
+                formattedValue += value.slice(i, i + 3) + ' ';
+            }
+
+            // Remover el último espacio extra si existe
+            formattedValue = formattedValue.trim();
+
+            // Actualizar el valor visual del input
+            this.value = formattedValue;
+
+            // Almacenar el valor sin formato en el campo oculto para envío
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'telefono_raw'; // Cambia este nombre si es necesario
+            hiddenInput.value = value; // Solo números
+
+            // Remover el campo oculto anterior si existe
+            const existingHiddenInput = document.querySelector("input[name='telefono_raw']");
+            if (existingHiddenInput) {
+                existingHiddenInput.remove();
+            }
+
+            // Agregar el nuevo campo oculto al formulario
+            this.parentNode.appendChild(hiddenInput);
+        });
+    });
+</script>
 
 {% endblock %}

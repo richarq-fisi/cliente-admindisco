@@ -1,14 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+# perfil.User
 class User(AbstractUser):
     id = models.AutoField(primary_key=True)
     is_admindisco = models.BooleanField('admin disco', default=False)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     class Meta:
         verbose_name_plural = "Usuarios"
 
+# perfil.Cliente
 class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -17,6 +18,7 @@ class Cliente(models.Model):
     class Meta:
         verbose_name_plural = "Clientes"
 
+# perfil.Administrador
 class Administrador(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)

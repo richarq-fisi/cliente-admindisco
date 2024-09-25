@@ -31,7 +31,9 @@ def cliente_registro(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('login')
+            # Agregar el mensaje de éxito
+            messages.success(request, 'Registro exitoso. Bienvenido!')
+            return redirect('login')  # Redirige a la página de inicio de sesión
     else:
         form = ClienteRegistroForm()
     return render(request, 'cliente_registro.html', {'form': form})
