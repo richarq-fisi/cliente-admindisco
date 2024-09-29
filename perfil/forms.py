@@ -49,7 +49,7 @@ class AdminRegistroForm(UserCreationForm):
 
     telefono = forms.CharField(max_length=15)
     correo_personal = forms.EmailField(required=False)
-    nombre_admin = forms.CharField(max_length=100)
+    nombre_admin = forms.CharField(max_length=100, label="Nombre de administrador")
 
     class Meta(UserCreationForm.Meta):
         model = User
