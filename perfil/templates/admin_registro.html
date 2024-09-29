@@ -16,13 +16,12 @@
         box-shadow: 0 0 5px #7a7a7a !important; /* Opcional, añade un efecto de sombra */
     }
     .registrar {
-    /* Estilo normal */
-    background-color: black; /* Color de fondo normal (puedes ajustarlo según tus necesidades) */
-    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
-    color: whitesmoke;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-weight: bold;
+        background-color: black; /* Color de fondo normal (puedes ajustarlo según tus necesidades) */
+        transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+        color: whitesmoke;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-weight: bold;
     }
 
     .registrar:hover {
@@ -114,6 +113,47 @@
     </form>
 </div>
 
+<!-- Scripts jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    // Actualizar provincias cuando se selecciona un departamento
+    $("#id_departamento").change(function () {
+        var url = "{% url 'cargar_provincias' %}";  // URL de la vista para cargar provincias
+        var departamentoId = $(this).val();
 
+        $.ajax({
+            url: url,
+            data: {
+                'departamento_id': departamentoId
+            },
+            success: function (data) {
+                $("#id_provincia").html('<option value="">Seleccione una provincia</option>');
+                $("#id_distrito").html('<option value="">Seleccione un distrito</option>');  // Limpiar distritos
+                $.each(data, function (key, value) {
+                    $("#id_provincia").append('<option value="' + value.id + '">' + value.nombre + '</option>');
+                });
+            }
+        });
+    });
+
+    // Actualizar distritos cuando se selecciona una provincia
+    $("#id_provincia").change(function () {
+        var url = "{% url 'cargar_distritos' %}";  // URL de la vista para cargar distritos
+        var provinciaId = $(this).val();
+
+        $.ajax({
+            url: url,
+            data: {
+                'provincia_id': provinciaId
+            },
+            success: function (data) {
+                $("#id_distrito").html('<option value="">Seleccione un distrito</option>');
+                $.each(data, function (key, value) {
+                    $("#id_distrito").append('<option value="' + value.id + '">' + value.nombre + '</option>');
+                });
+            }
+        });
+    });
+</script>
 
 {% endblock %}
