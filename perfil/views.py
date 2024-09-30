@@ -7,9 +7,8 @@ from django import forms
 
 from .forms import ClienteRegistroForm, AdminRegistroForm
 from .models import User, Cliente, Administrador
-
 from django.http import JsonResponse
-from .models import Provincia, Distrito
+from geografia.models import Provincia, Distrito
 
 def cargar_provincias(request):
     departamento_id = request.GET.get('departamento_id')

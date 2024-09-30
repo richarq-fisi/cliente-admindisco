@@ -9,8 +9,8 @@ from django.utils.translation import gettext_lazy as _
 UNFOLD = {
     "SHOW_HISTORY": False,
     "THEME": "light",
-    "SITE_TITLE": "Panel de administración",
-    "SITE_HEADER": "Bienvenido al Panel de administración",
+    "SITE_TITLE": "Panel de SuperUsuario",
+    "SITE_HEADER": "Bienvenido al Panel de SuperUsuario",
     "COLORS": {
         "font": {
             "subtle-light": "107 114 128",
@@ -52,8 +52,7 @@ ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS', default=[]))
 # Application definition
 
 INSTALLED_APPS = [
-    #'jazzmin',
-    #'unfold',
+    'unfold',
     'crispy_forms',
     'crispy_bootstrap5',
     'widget_tweaks',
@@ -66,6 +65,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # APPS
     'perfil',
+    'geografia',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'

@@ -1,8 +1,8 @@
 from django import forms
 from django.forms import ModelChoiceField
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Cliente, Administrador, Departamento, Provincia, Distrito
-
+from .models import User, Cliente, Administrador
+from geografia.models import Departamento, Provincia, Distrito
 #from django.contrib.auth.models import User
 
 class ClienteRegistroForm(UserCreationForm):
@@ -82,6 +82,7 @@ class AdminRegistroForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_admindisco = True
+        user.is_active = False  # Desactivar la cuenta por defecto
         if commit:
             user.save()
             Administrador.objects.create(

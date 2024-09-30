@@ -1,14 +1,15 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.admin import SimpleListFilter
-from .models import User, Cliente, Administrador, Departamento, Provincia, Distrito
+from .models import User, Cliente, Administrador
 from .customForms import ClienteForm, AdministradorForm
+from django.utils.html import format_html
 
-#from unfold.admin import ModelAdmin
-from django.contrib.admin import ModelAdmin
+from unfold.admin import ModelAdmin
+#from django.contrib.admin import ModelAdmin
 
 # DESREGISTRAR MODEL 'GROUP'
-admin.site.unregister(Group)
+#admin.site.unregister(Group)
 
 ##########################################################################
 # FILTRO PERSONALIZADO 
@@ -48,45 +49,57 @@ class CuentaUserFilter(SimpleListFilter):
 # MODELOS PERSONALIZADOS
 # DISCOTECA
 class AdministradorAdmin(ModelAdmin):
-    form = AdministradorForm # Utilizar el nuevo formulario personalizado
+    form = AdministradorForm  # Utilizar el nuevo formulario personalizado
     list_display = ('get_username', 'get_nombre_discoteca', 'get_ruc', 'get_razon_social', 'get_email', 'get_is_active')
     list_filter = (CuentaActivaFilter,)
 
     def get_username(self, obj):
         return obj.nombre_admin
+
     def get_nombre_discoteca(self, obj):
         return obj.nombre_discoteca
+
     def get_ruc(self, obj):
         return obj.ruc
+
     def get_razon_social(self, obj):
         return obj.razon_social
+
     def get_email(self, obj):
         return obj.user.email
+
     def get_is_active(self, obj):
-        return obj.user.is_active
+        return format_html(
+            '<span style="color: {}; font-weight: bold;">{}</span>',
+            'green' if obj.user.is_active else 'red',
+            'Activo' if obj.user.is_active else 'Inactivo'
+        )
 
     get_username.short_description = 'Administrador de Discoteca'
     get_nombre_discoteca.short_description = 'Discoteca'
     get_ruc.short_description = 'RUC'
     get_razon_social.short_description = 'Razón Social'
     get_email.short_description = 'Correo Electrónico'
-    get_is_active.boolean = True
     get_is_active.short_description = 'Estado de Cuenta'
+
 
 # CLIENTE
 class ClienteAdmin(ModelAdmin):
     form = ClienteForm  # Utilizar el nuevo formulario personalizado
-    list_display = ('get_username', 'get_email', 'get_is_active')
+    list_display = ('get_username', 'get_email', 'get_telefono', 'get_is_active')
 
     def get_username(self, obj):
         return obj.user.username   
     def get_email(self, obj):
         return obj.user.email  
+    def get_telefono(self, obj):
+        return obj.telefono
     def get_is_active(self, obj):
         return obj.user.is_active 
 
     get_username.short_description = 'Cliente'
     get_email.short_description = 'Email'
+    get_telefono.short_description = 'Teléfono'
     get_is_active.boolean = True
     get_is_active.short_description = 'Estado de Cuenta'
 
@@ -103,10 +116,6 @@ class UserAdmin(ModelAdmin):
     get_is_active.short_description = 'Cuenta Activa'
 
 #########################################################################
-# REGISTRO DE MODELOS
-admin.site.register(Departamento)
-admin.site.register(Provincia)
-admin.site.register(Distrito)
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Cliente, ClienteAdmin)

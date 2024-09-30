@@ -43,9 +43,7 @@ class ClienteForm(forms.ModelForm):
     email = forms.EmailField(label="Correo electrónico")
     is_active = forms.BooleanField(label="Cuenta Activa", required=False)
 
-    class Meta:
-        model = Cliente
-        fields = ['username', 'email', 'telefono', 'direccion', 'is_active']
+    
 
     def __init__(self, *args, **kwargs):
         super(ClienteForm, self).__init__(*args, **kwargs)
