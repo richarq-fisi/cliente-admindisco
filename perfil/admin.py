@@ -8,9 +8,6 @@ from django.utils.html import format_html
 from unfold.admin import ModelAdmin
 #from django.contrib.admin import ModelAdmin
 
-# DESREGISTRAR MODEL 'GROUP'
-#admin.site.unregister(Group)
-
 ##########################################################################
 # FILTRO PERSONALIZADO 
 # 'is_active'

@@ -36,3 +36,6 @@ python manage.py runserver
 [https://www.youtube.com/watch?v=WGo-1xB-NO8](https://www.youtube.com/watch?v=WGo-1xB-NO8)
 
 Filtro Personalizado admindjango
+
+
+Nombre negocio
