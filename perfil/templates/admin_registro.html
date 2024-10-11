@@ -31,7 +31,7 @@
 </style>
 
 <div class="container mt-3">
-    <h2 class="text-center">Registro Administrador de Discoteca</h2>
+    <h2 class="text-center">Registro Administrador de Negocio</h2>
     <form method="POST" autocomplete="off">
         {% csrf_token %}
         <div class="row">
@@ -50,9 +50,9 @@
                 {{ form.correo_personal|as_crispy_field }}
             </div>
 
-            <!-- Nombre de la discoteca -->
+            <!-- Nombre de la negocio -->
             <div class="col-md-6">
-                {{ form.nombre_discoteca|as_crispy_field }}
+                {{ form.nombre_negocio|as_crispy_field }}
             </div>
 
             <!-- Razón social -->

@@ -37,7 +37,7 @@ class ClienteRegistroForm(UserCreationForm):
 
 class AdminRegistroForm(UserCreationForm):
     # Campos adicionales
-    nombre_discoteca = forms.CharField(max_length=255)
+    nombre_negocio = forms.CharField(max_length=255)
     razon_social = forms.CharField(max_length=255)
     ruc = forms.CharField(max_length=11)
     direccion = forms.CharField(max_length=255)
@@ -88,7 +88,7 @@ class AdminRegistroForm(UserCreationForm):
             Administrador.objects.create(
                 user=user,
                 nombre_admin=self.cleaned_data['nombre_admin'],
-                nombre_discoteca=self.cleaned_data['nombre_discoteca'],
+                nombre_negocio=self.cleaned_data['nombre_negocio'],
                 razon_social=self.cleaned_data['razon_social'],
                 ruc=self.cleaned_data['ruc'],
                 direccion=self.cleaned_data['direccion'],

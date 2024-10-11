@@ -27,7 +27,7 @@ class Administrador(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     nombre_admin = models.CharField(max_length=255)
-    nombre_discoteca = models.CharField(max_length=255)
+    nombre_negocio = models.CharField(max_length=255)
     razon_social = models.CharField(max_length=255)
     ruc = models.CharField(max_length=11, unique=True)
     departamento = models.ForeignKey(Departamento, on_delete=models.SET_NULL, null=True)

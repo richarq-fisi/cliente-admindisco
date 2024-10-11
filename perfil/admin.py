@@ -47,14 +47,14 @@ class CuentaUserFilter(SimpleListFilter):
 # DISCOTECA
 class AdministradorAdmin(ModelAdmin):
     form = AdministradorForm  # Utilizar el nuevo formulario personalizado
-    list_display = ('get_username', 'get_nombre_discoteca', 'get_ruc', 'get_razon_social', 'get_email', 'get_is_active')
+    list_display = ('get_username', 'get_nombre_negocio', 'get_ruc', 'get_razon_social', 'get_email', 'get_is_active')
     list_filter = (CuentaActivaFilter,)
 
     def get_username(self, obj):
         return obj.nombre_admin
 
-    def get_nombre_discoteca(self, obj):
-        return obj.nombre_discoteca
+    def get_nombre_negocio(self, obj):
+        return obj.nombre_negocio
 
     def get_ruc(self, obj):
         return obj.ruc
@@ -73,7 +73,7 @@ class AdministradorAdmin(ModelAdmin):
         )
 
     get_username.short_description = 'Administrador de Discoteca'
-    get_nombre_discoteca.short_description = 'Discoteca'
+    get_nombre_negocio.short_description = 'Negocio'
     get_ruc.short_description = 'RUC'
     get_razon_social.short_description = 'Razón Social'
     get_email.short_description = 'Correo Electrónico'

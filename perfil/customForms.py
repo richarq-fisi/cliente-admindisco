@@ -10,7 +10,7 @@ class AdministradorForm(forms.ModelForm):
 
     class Meta:
         model = Administrador
-        fields = ['username', 'email', 'nombre_admin', 'nombre_discoteca', 'razon_social', 'ruc', 'direccion', 'departamento', 'provincia', 'distrito', 'telefono', 'correo_personal', 'is_active']
+        fields = ['username', 'email', 'nombre_admin', 'nombre_negocio', 'razon_social', 'ruc', 'direccion', 'departamento', 'provincia', 'distrito', 'telefono', 'correo_personal', 'is_active']
 
     def __init__(self, *args, **kwargs):
         super(AdministradorForm, self).__init__(*args, **kwargs)
