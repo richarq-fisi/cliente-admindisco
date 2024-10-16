@@ -3,6 +3,12 @@
 {% load widget_tweaks %}
 
 {% block body %}
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+
 <style>
     input:focus {
         outline: none;
@@ -76,6 +82,16 @@
         {% endif %}
     </div>
 </div>
+
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
+<script>
+    {% for message in messages %}
+        alertify.set('notifier','position', 'top-right');
+        alertify.error('{{ message }}');
+    {% endfor %}
+</script>
 
 <!-- JavaScript para alternar visibilidad de la contraseña -->
 <script>
