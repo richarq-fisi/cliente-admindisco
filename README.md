@@ -34,7 +34,7 @@ python manage.py runserver
 [https://www.youtube.com/watch?v=WGo-1xB-NO8](https://www.youtube.com/watch?v=WGo-1xB-NO8)
 
 ![1.png](/docs/1.png)
-![2.png](/docs/1.png)
-![3.PNG](/docs/1.PNG)
-![4.PNG](/docs/1.PNG)
-![5.PNG](/docs/1.PNG)
+![2.png](/docs/2.png)
+![3.PNG](/docs/3.PNG)
+![4.PNG](/docs/4.PNG)
+![5.PNG](/docs/5.PNG)
