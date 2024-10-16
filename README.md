@@ -27,15 +27,14 @@ python manage.py runserver
 
 ----
 
-
-
 ### Page 404 Not Found
 [https://learndjango.com/tutorials/customizing-django-404-and-500-error-pages](https://learndjango.com/tutorials/customizing-django-404-and-500-error-pages)
 
 ### Django CSS Missing problem in Admin Panel
 [https://www.youtube.com/watch?v=WGo-1xB-NO8](https://www.youtube.com/watch?v=WGo-1xB-NO8)
 
-Filtro Personalizado admindjango
-
-
-Nombre negocio
+![1.png](/docs/1.png)
+![2.png](/docs/1.png)
+![3.PNG](/docs/1.PNG)
+![4.PNG](/docs/1.PNG)
+![5.PNG](/docs/1.PNG)
